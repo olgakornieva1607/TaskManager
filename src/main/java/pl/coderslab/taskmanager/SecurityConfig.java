@@ -1,4 +1,4 @@
-package pl.coderslab.finalproject;
+package pl.coderslab.taskmanager;
 
 
 import org.springframework.context.annotation.Configuration;

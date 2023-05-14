@@ -1,13 +1,13 @@
-package pl.coderslab.finalproject;
+package pl.coderslab.taskmanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FinalprojectApplication {
+public class TaskmanagerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FinalprojectApplication.class, args);
+        SpringApplication.run(TaskmanagerApplication.class, args);
     }
 
 }
