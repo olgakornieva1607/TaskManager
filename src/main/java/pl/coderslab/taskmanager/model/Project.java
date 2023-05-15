@@ -3,6 +3,7 @@ package pl.coderslab.taskmanager.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -22,18 +23,20 @@ public class Project {
 
     @NotBlank
     @Column(name="name")
-    @Size(min = 2, max = 20, message = "{validation.constraints.Size.message}")
+    @Size(min = 1, max = 20, message = "{validation.constraints.Size.message}")
     private String name;
 
     @NotBlank
     @Column(name="description")
-    @Size(min = 2, max = 100, message = "{validation.constraints.Size.message}")
+    @Size(min = 1, max = 100, message = "{validation.constraints.Size.message}")
     private String description;
 
     @Column(name="start_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
     @Column(name="end_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
 
