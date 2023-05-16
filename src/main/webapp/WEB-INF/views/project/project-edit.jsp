@@ -14,7 +14,7 @@
 
 <body>
 
-<form:form action="/projects/edit" method="post" modelAttribute="projectToEdit">
+<form:form action="/projects" method="put" modelAttribute="projectToEdit">
 
     <form:input type="hidden" name="id" path="id" id="id" />
 

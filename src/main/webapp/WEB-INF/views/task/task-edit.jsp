@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<form:form action="/tasks/edit" method="post" modelAttribute="taskToEdit">
+<form:form action="/tasks" method="put" modelAttribute="taskToEdit">
 
     <form:input type="hidden" name="id" path="id" id="id" />
 

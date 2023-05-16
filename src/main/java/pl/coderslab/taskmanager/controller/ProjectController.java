@@ -64,7 +64,7 @@ public class ProjectController {
     }
 
 
-    @PostMapping("/edit")
+    @PutMapping("")
     public String performUpdateProject(@Valid @ModelAttribute("projectToEdit") Project project, BindingResult result) {
         if(result.hasErrors()){
             return PROJECT_PROJECT_EDIT;

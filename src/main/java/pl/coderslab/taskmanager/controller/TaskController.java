@@ -61,7 +61,7 @@ public class TaskController {
         }
 
 
-        @PostMapping("/edit")
+        @PutMapping("")
         public String performUpdateTask(@Valid @ModelAttribute("taskToEdit") Task task, BindingResult result){
             if(result.hasErrors()){
                 return TASK_TASK_EDIT;
