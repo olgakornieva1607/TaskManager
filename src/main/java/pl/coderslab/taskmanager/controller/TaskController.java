@@ -6,17 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import pl.coderslab.taskmanager.model.Project;
 import pl.coderslab.taskmanager.model.Task;
-
 import pl.coderslab.taskmanager.service.ProjectService;
 import pl.coderslab.taskmanager.service.TaskService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.Optional;
+
 
 
 @Controller
@@ -30,15 +27,9 @@ public class TaskController {
 
     @GetMapping("/{id}/new")
     public String showAddTaskForm(@PathVariable Long id, Model model, Principal principal) {
-
-        Optional<Project> projectOptional = projectService.get(id);
-        if(projectOptional.isPresent()){
-            Project project = projectOptional.get();
-            Task task = new Task();
-            task.setProject(project);
-            model.addAttribute("task", task);
-        }
-
+        Task task = new Task();
+        task.setProject(projectService.get(id));
+        model.addAttribute("task", task);
         return "task/task-add";
     }
 

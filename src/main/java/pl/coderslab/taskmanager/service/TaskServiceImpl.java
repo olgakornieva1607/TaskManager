@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.taskmanager.model.Task;
 import pl.coderslab.taskmanager.repository.TaskRepository;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +30,9 @@ public class TaskServiceImpl implements TaskService{
     }
 
     @Override
-    public Optional<Task> getTask(Long id) {
-        return taskRepository.findById(id);
+    public Task getTask(Long id) {
+        Optional <Task> foundTask = taskRepository.findById(id);
+        return foundTask.orElseThrow(EntityNotFoundException::new);
     }
 
     @Override

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.taskmanager.model.Project;
 import pl.coderslab.taskmanager.repository.ProjectRepository;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,8 +27,9 @@ public class ProjectServiceImpl implements ProjectService{
     }
 
     @Override
-    public Optional<Project> get(Long id) {
-        return projectRepository.findById(id);
+    public Project get(Long id) {
+        Optional<Project> foundProject = projectRepository.findById(id);
+        return foundProject.orElseThrow(EntityNotFoundException::new);
     }
 
     @Override

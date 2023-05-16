@@ -11,8 +11,6 @@ import pl.coderslab.taskmanager.model.Project;
 import pl.coderslab.taskmanager.service.ProjectService;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.taskmanager.service.TaskService;
-
-import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -78,7 +76,7 @@ public class ProjectController {
 
     @GetMapping("/{id}/details")
     public String showProjectDetails(@PathVariable Long id, Model model){
-        model.addAttribute("project", projectService.get(id).orElseThrow(EntityNotFoundException::new));
+        model.addAttribute("project", projectService.get(id));
         model.addAttribute("tasks", taskService.findTasksByProjectId(id));
         return "/project/project-show";
     }

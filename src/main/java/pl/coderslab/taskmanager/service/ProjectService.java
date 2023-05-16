@@ -3,7 +3,7 @@ package pl.coderslab.taskmanager.service;
 import pl.coderslab.taskmanager.model.Project;
 
 import java.util.List;
-import java.util.Optional;
+
 
 public interface ProjectService {
 
@@ -11,7 +11,7 @@ public interface ProjectService {
 
     void add(Project project);
 
-    Optional<Project> get(Long id);
+    Project get(Long id);
 
     void delete(Long id);
 
