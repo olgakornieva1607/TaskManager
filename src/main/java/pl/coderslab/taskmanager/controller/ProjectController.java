@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.taskmanager.model.Project;
 import pl.coderslab.taskmanager.service.ProjectService;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.taskmanager.service.TaskService;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
@@ -24,6 +25,7 @@ public class ProjectController {
     private static final String PROJECT_PROJECT_ADD = "/project/project-add";
     private static final String PROJECT_PROJECT_EDIT = "/project/project-edit";
     private final ProjectService projectService;
+    private final TaskService taskService;
 
     @GetMapping("/all")
     public String showAllProjects(Model model){
@@ -45,7 +47,6 @@ public class ProjectController {
             return PROJECT_PROJECT_ADD;
         }
         projectService.add(project);
-        log.info("Adding new project - {}", project);
         return REDIRECT_PROJECTS_ALL;
     }
 
@@ -78,6 +79,7 @@ public class ProjectController {
     @GetMapping("/{id}/details")
     public String showProjectDetails(@PathVariable Long id, Model model){
         model.addAttribute("project", projectService.get(id).orElseThrow(EntityNotFoundException::new));
+        model.addAttribute("tasks", taskService.findTasksByProjectId(id));
         return "/project/project-show";
     }
 

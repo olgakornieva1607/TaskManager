@@ -17,5 +17,4 @@ public interface ProjectService {
 
     void update(Project project);
 
-
 }

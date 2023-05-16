@@ -4,7 +4,7 @@
 <!DOCTYPE>
 <html>
 <head>
-    <title>Add new project</title>
+    <title>Edit project</title>
     <style>
         .error{
             color:red;
@@ -14,16 +14,16 @@
 
 <body>
 
-<form:form action="/projects" method="post" modelAttribute="projectToEdit">
+<form:form action="/projects/edit" method="post" modelAttribute="projectToEdit">
 
     <form:input type="hidden" name="id" path="id" id="id" />
 
     <label for="name">Name</label>
-    <form:input path="name" id="name" /><br>
+    <form:input path="name" id="name" maxlength="20"/><br>
     <form:errors path="name" cssClass="error" /><br>
 
     <label for="description">Description</label>
-    <form:input path="description" id="description" /><br>
+    <form:textarea path="description" id="description" maxlength="100"/><br>
     <form:errors path="description" cssClass="error" /><br>
 
 

@@ -23,9 +23,9 @@
             <td><c:out value="${project.startDate}"/></td>
             <td><c:out value="${project.endDate}"/></td>
             <td>
-                <a href="<c:out value="/projects/${project.id}"/>">Delete</a>
+                <a href="<c:out value="/projects/${project.id}/details"/>">Show tasks</a>
                 <a href="<c:out value="/projects/${project.id}/edit"/>">Edit</a>
-                <a href="<c:out value="/projects/${project.id}/details"/>">Show details</a>
+                <a href="<c:out value="/projects/${project.id}"/>">Delete</a>
             </td>
         </tr>
     </c:forEach>
