@@ -33,7 +33,7 @@
     <label for="endDate">End date</label>
     <form:input path="endDate" id="endDate" type="date" /><br>
 
-    <input type="hidden" name="userId" value="${user.id}">
+    <form:input type="hidden" name="user.id" path="user.id" id="id" />
 
     <input type="submit" value="Save">
 

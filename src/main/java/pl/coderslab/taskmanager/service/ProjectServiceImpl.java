@@ -1,7 +1,6 @@
 package pl.coderslab.taskmanager.service;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pl.coderslab.taskmanager.model.Project;
 import pl.coderslab.taskmanager.repository.ProjectRepository;
@@ -10,7 +9,6 @@ import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ProjectServiceImpl implements ProjectService{
@@ -18,7 +16,13 @@ public class ProjectServiceImpl implements ProjectService{
 
     @Override
     public List<Project> getProjects() {
+
         return projectRepository.findAll();
+    }
+
+    @Override
+    public List<Project> findProjectsByUserId(Long id) {
+        return projectRepository.findProjectsByUserId(id);
     }
 
     @Override

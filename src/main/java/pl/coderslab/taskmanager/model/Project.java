@@ -39,5 +39,9 @@ public class Project {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
+
 
 }

@@ -25,16 +25,23 @@ public class User {
     @NotBlank
     @Size(min = 2, max = 20, message = "{validation.constraints.Size.message}")
     @Column(name = "username", unique=true)
-    private String userName;
+    private String username;
 
     @NotBlank
-    @Size(min = 2, max = 20, message = "{validation.constraints.Size.message}")
+    @Size(min = 2, max = 70, message = "{validation.constraints.Size.message}")
     @Column(name = "password")
     private String password;
 
-    @ManyToMany
-    @JoinTable(name="users_projects")
+    @OneToMany(mappedBy = "user")
     private Set<Project> projects = new HashSet<>();
+
+    @Column(name = "enabled")
+    private int enabled;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
 
 }

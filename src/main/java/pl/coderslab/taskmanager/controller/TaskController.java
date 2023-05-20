@@ -2,11 +2,13 @@ package pl.coderslab.taskmanager.controller;
 
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.taskmanager.model.Task;
+import pl.coderslab.taskmanager.security.PersonDetails;
 import pl.coderslab.taskmanager.service.ProjectService;
 import pl.coderslab.taskmanager.service.TaskService;
 
@@ -24,11 +26,15 @@ public class TaskController {
     private static final String TASK_TASK_EDIT = "/task/task-edit";
     private final TaskService taskService;
     private final ProjectService projectService;
+    private final UserDetailsService userDetailsService;
 
     @GetMapping("/{id}/new")
     public String showAddTaskForm(@PathVariable Long id, Model model, Principal principal) {
         Task task = new Task();
         task.setProject(projectService.get(id));
+        String username = principal.getName();
+        PersonDetails personDetails = (PersonDetails) userDetailsService.loadUserByUsername(username);
+        task.setUser(personDetails.getUser());
         model.addAttribute("task", task);
         return "task/task-add";
     }

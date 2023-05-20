@@ -37,6 +37,8 @@
 
     <form:input type="hidden" name="project.id" path="project.id" id="project.id" />
 
+    <form:input type="hidden" name="user.id" path="user.id" id="id" />
+
     <input type="submit" value="Save">
 
 </form:form>

@@ -1,20 +1,21 @@
 package pl.coderslab.taskmanager.controller;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.taskmanager.model.Project;
+import pl.coderslab.taskmanager.security.PersonDetails;
 import pl.coderslab.taskmanager.service.ProjectService;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.taskmanager.service.TaskService;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
-@Slf4j
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("projects")
@@ -25,16 +26,26 @@ public class ProjectController {
     private final ProjectService projectService;
     private final TaskService taskService;
 
+    private final UserDetailsService userDetailsService;
+
     @GetMapping("/all")
-    public String showAllProjects(Model model){
-        List<Project> projects = projectService.getProjects();
+    public String showAllProjectsByUser(Model model, Principal principal){
+        String username = principal.getName();
+        PersonDetails personDetails = (PersonDetails) userDetailsService.loadUserByUsername(username);
+        Long userId = personDetails.getId();
+        List<Project> projects = projectService.findProjectsByUserId(userId);
         model.addAttribute("projects", projects);
-        return "/project/project-all";
+        return "project/project-all";
     }
 
+
     @GetMapping("/new")
-    public String addProject(Model model){
-        model.addAttribute("project", new Project());
+    public String addProject(Model model, Principal principal){
+        Project project = new Project();
+        String username = principal.getName();
+        PersonDetails personDetails = (PersonDetails) userDetailsService.loadUserByUsername(username);
+        project.setUser(personDetails.getUser());
+        model.addAttribute("project", project);
         return PROJECT_PROJECT_ADD;
     }
 

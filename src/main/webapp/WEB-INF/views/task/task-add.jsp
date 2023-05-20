@@ -36,6 +36,8 @@
 
     <form:input type="hidden" name="project.id" path="project.id" id="id" />
 
+    <form:input type="hidden" name="user.id" path="user.id" id="id" />
+
     <input type="submit" value="Add Task" />
 </form:form>
 </body>

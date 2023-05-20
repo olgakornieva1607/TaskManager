@@ -1,11 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE>
 <html>
 <head>
     <title>List of projects</title>
 </head>
 <body>
+
 <a href="<c:out value="/projects/new"/>">Add new project</a>
 <br><br>
 <table border="1">
@@ -31,5 +34,6 @@
     </c:forEach>
     </tbody>
 </table>
+
 </body>
 </html>

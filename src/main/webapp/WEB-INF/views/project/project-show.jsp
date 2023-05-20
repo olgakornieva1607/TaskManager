@@ -25,7 +25,7 @@
 
 
 <br>
-<a href="<c:out value="/projects/all"/>">Go to all projects</a>
+<a href="<c:out value="/projects/all"/>">Show all projects</a>
 <br>
 <h3>Tasks</h3>
 
