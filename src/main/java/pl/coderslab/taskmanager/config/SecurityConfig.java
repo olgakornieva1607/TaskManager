@@ -21,8 +21,9 @@ public class SecurityConfig {
                 .loginProcessingUrl("/process_login")
                 .defaultSuccessUrl("/projects/all")
                 .failureUrl("/?error=true")
-//                .and().logout().logoutSuccessUrl("/")
-//                .permitAll()
+                .and()
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/")
+                .permitAll()
                 .and().exceptionHandling().accessDeniedPage("/403");
         return http.build();
     }

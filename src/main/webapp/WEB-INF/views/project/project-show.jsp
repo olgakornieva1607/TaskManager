@@ -1,10 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>Project's details</title>
 </head>
 <body>
+
 <table border="1">
     <th>name</th>
     <th>description</th>
@@ -56,6 +58,12 @@
     </c:forEach>
     </tbody>
 </table>
+
+<br><br>
+<form action="<c:url value="/logout"/>" method="post">
+    <input class="fa fa-id-badge" type="submit" value="Wyloguj">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
 
 </body>
 </html>
