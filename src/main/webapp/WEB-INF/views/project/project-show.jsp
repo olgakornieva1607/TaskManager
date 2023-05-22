@@ -61,7 +61,7 @@
 
 <br><br>
 <form action="<c:url value="/logout"/>" method="post">
-    <input class="fa fa-id-badge" type="submit" value="Wyloguj">
+    <input class="fa fa-id-badge" type="submit" value="Logout">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 
