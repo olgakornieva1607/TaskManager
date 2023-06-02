@@ -24,11 +24,11 @@
 
                         <label for="username">Enter username</label>
                         <form:input class="form-control" path="username" id="username" maxlength="20"/><br>
-                        <form:errors path="username" cssClass="error"/><br>
+                        <form:errors path="username" cssClass="error" style="color: red; font-size: smaller;"/><br>
 
                         <label for="password">Enter password</label>
                         <form:password class="form-control" path="password" id="password" maxlength="20"/><br>
-                        <form:errors path="password" cssClass="error"/><br>
+                        <form:errors path="password" cssClass="error" style="color: red; font-size: smaller;"/><br>
 
                         <input class="btn btn-primary" type="submit" value="Sign up">
                     </form:form>
