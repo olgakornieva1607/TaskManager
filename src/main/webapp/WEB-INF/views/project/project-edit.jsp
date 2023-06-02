@@ -5,39 +5,103 @@
 <html>
 <head>
     <title>Edit project</title>
-    <style>
-        .error{
-            color:red;
-        }
-    </style>
-</head>
 
-<body>
+    <%@ include file="/header.jsp" %>
+<body id="page-top">
+<!-- Page Wrapper -->
+<div id="wrapper">
 
-<form:form action="/projects" method="put" modelAttribute="projectToEdit">
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <form:input type="hidden" name="id" path="id" id="id" />
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
 
-    <label for="name">Name</label>
-    <form:input path="name" id="name" maxlength="20"/><br>
-    <form:errors path="name" cssClass="error" /><br>
+    </ul>
+    <!-- End of Sidebar -->
 
-    <label for="description">Description</label>
-    <form:textarea path="description" id="description" maxlength="100"/><br>
-    <form:errors path="description" cssClass="error" /><br>
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <div class="navbar-nav">
+                    <div>
+                        <form action="<c:out value="/projects/all"/>">
+                            <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit" value="Home">
+                        </form>
+                    </div>
+                    <div>
+                        <form action="<c:url value="/logout"/>" method="post">
+                            <input class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit" value="Logout">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Edit Project</h1>
+                </div>
+
+                <div class="card shadow mb-4"/>
+                <div class="card-body"/>
+
+                <div class="container-fluid>
+
+                <div class="card shadow mb-4">
+                    <div class="card-body">
 
 
-    <label for="startDate">Start date</label>
-    <form:input path="startDate" id="startDate" type="date" /><br><br>
+                        <form:form action="/projects" method="put" modelAttribute="projectToEdit">
 
-    <label for="endDate">End date</label>
-    <form:input path="endDate" id="endDate" type="date" /><br>
+                            <form:input type="hidden" name="id" path="id" id="id" />
 
-    <form:input type="hidden" name="user.id" path="user.id" id="id" />
+                            <label for="name">Name</label>
+                            <form:input class="form-control" path="name" id="name" maxlength="20"/><br>
+                            <form:errors path="name" cssClass="error" style="color: red; font-size: smaller;"/><br>
 
-    <input type="submit" value="Save">
+                            <label for="description">Description</label>
+                            <form:textarea class="form-control" path="description" id="description" maxlength="100"/><br>
+                            <form:errors path="description" cssClass="error" style="color: red; font-size: smaller;"/><br>
 
-</form:form>
+
+                            <label for="startDate">Start date</label>
+                            <form:input class="form-control" path="startDate" id="startDate" type="date" /><br><br>
+
+                            <label for="endDate">End date</label>
+                            <form:input class="form-control" path="endDate" id="endDate" type="date" /><br>
+
+                            <form:input type="hidden" name="user.id" path="user.id" id="id" />
+
+                            <input class="btn btn-primary" type="submit" value="Save">
+
+                        </form:form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+</div>
+<!-- End of Main Content -->
 
 </body>
+
 </html>
