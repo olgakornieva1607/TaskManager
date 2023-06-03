@@ -32,7 +32,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Project> projects = new HashSet<>();
 
     @Column(name = "enabled")

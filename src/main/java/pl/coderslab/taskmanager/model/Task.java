@@ -44,12 +44,12 @@ public class Task {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
-    @ManyToOne
-    @JoinColumn(name="project_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="project_id", nullable = false)
     private Project project;
     
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="user_id", nullable = false)
     private User user;
 
 }

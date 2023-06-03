@@ -3,12 +3,15 @@ package pl.coderslab.taskmanager.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Cascade;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -42,6 +45,10 @@ public class Project {
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
+
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private Set<Task> tasks = new HashSet<>();
 
 
 }
